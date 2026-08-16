@@ -1,10 +1,19 @@
-import { StrictMode } from 'react'
+import { StrictMode , lazy} from 'react'
 import { createRoot } from 'react-dom/client'
+import { BrowserRouter, Routes, Route } from 'react-router';
 import './index.css'
-import App from './App.jsx'
+import Home from './homepage.jsx'
+
+
+const CodeSpace = lazy(()=> import('./codeSpace.jsx')); 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
+	<BrowserRouter>
+		<Routes>
+			<Route path='/code' element={<CodeSpace/>} />
+			<Route path="/" element={<Home/>} />
+		</Routes>
+	</BrowserRouter>
+  </StrictMode>
 )
